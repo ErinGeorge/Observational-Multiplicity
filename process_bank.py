@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def process_bank_df(df):
     signup = (df['y'] == 'yes')
@@ -95,3 +96,8 @@ def process_bank_df(df):
                      nr_employed_lt_5100, nr_employed_gt_5100, cons_price_idx_geq_93_5,
                       cons_conf_idx_leq_n40, euribor3m_geq_100, euribor3m_geq_200, euribor3m_geq_300,
                      euribor3m_geq_400, euribor3m_geq_500], axis=1)
+
+if __name__ == '__main__':
+    df = pd.read_csv('data/bank-additional-full.csv', sep=';')
+    df = process_bank_df(df)
+    df.to_csv('data/bank_data.csv', index=False)
